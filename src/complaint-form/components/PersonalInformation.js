@@ -54,14 +54,7 @@ const PersonalInformation = ({
         <div className="form-column">
           <div className="form-row">
             <label className="form-label" htmlFor="pi-nature-of-complaint">Nature of Complaint <span className="required">*</span></label>
-            <select id="pi-nature-of-complaint" className="form-select" value={natureOfComplaint} onChange={(e) => setNatureOfComplaint(e.target.value)}>
-              <option value="">Select</option>
-              <option value="theft">Theft</option>
-              <option value="fraud">Fraud</option>
-              <option value="assault">Assault</option>
-              <option value="cybercrime">Cybercrime</option>
-              <option value="other">Other</option>
-            </select>
+            <input id="pi-nature-of-complaint" type="text" className="form-input form-input-wide" value={natureOfComplaint} onChange={(e) => setNatureOfComplaint(e.target.value)} />
           </div>
           <div className="form-row">
             <label className="form-label" htmlFor="pi-email">Email ID</label>

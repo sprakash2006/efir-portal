@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useRef } from "react";
+import { supabase } from "./supabaseClient";
 
 const CAPTCHA_CHARS = "ABCDEFGHJKLMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789";
 
@@ -168,13 +169,13 @@ export default function LoginPage() {
     const e = {};
     if (!username) e.username = "Please enter Username";
     if (!password) e.password = "Please enter Password";
-    else if (password.length < 8)
-      e.password = "Password should be 8 characters or more";
+    else if (password.length < 6)
+      e.password = "Password should be 6 characters or more";
     if (!captchaInput) e.captcha = "Please enter code";
     return e;
   };
 
-  const handleLogin = () => {
+  const handleLogin = async () => {
     const e = validate();
     setErrors(e);
     if (Object.keys(e).length === 0) {
@@ -183,12 +184,28 @@ export default function LoginPage() {
         refreshCaptcha();
         return;
       }
-      // Hardcoded login for test@gmail.com / 12345
-      if (username === "test@gmail.com" && password === "12345") {
-        navigate("/home");
-        return;
+      
+      try {
+        const { data, error } = await supabase
+          .from("user")
+          .select("*")
+          .eq("EmailId", username)
+          .single();
+
+        if (error || !data) {
+          setErrors({ server: "Invalid username or password." });
+          return;
+        }
+
+        if (data.password === password) {
+          setOtpVisible(true);
+        } else {
+          setErrors({ server: "Invalid username or password." });
+        }
+      } catch (err) {
+        console.error(err);
+        setErrors({ server: "A network error occurred." });
       }
-      setOtpVisible(true);
     }
   };
 
@@ -414,6 +431,17 @@ export default function LoginPage() {
                     )}
                   </td>
                 </tr>
+
+                {/* Server Error */}
+                {errors.server && (
+                  <tr>
+                    <td>
+                      <span style={{ color: "red", fontWeight: "bold", fontSize: 12, display: "block", marginBottom: 6 }}>
+                        {errors.server}
+                      </span>
+                    </td>
+                  </tr>
+                )}
 
                 {/* Language */}
                 <tr>

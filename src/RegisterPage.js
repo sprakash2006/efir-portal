@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useRef, useEffect } from "react";
+import { supabase } from "./supabaseClient";
 
 // ─── Constants ───────────────────────────────────────────────────────────────
 
@@ -197,6 +198,7 @@ export default function CitizenRegistration() {
   const [errors, setErrors] = useState({});
   const [otpVisible, setOtpVisible] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [submitMessage, setSubmitMessage] = useState(null);
 
   const refreshCaptcha = () => { setCaptchaText(generateCaptcha()); setCaptchaInput(""); };
 
@@ -217,15 +219,15 @@ export default function CitizenRegistration() {
     if (!address.state) e.addressState = "Please select State";
     if (!address.district) e.addressDistrict = "Please select District";
     if (!address.city || address.city.length < 3) e.addressCity = "Please enter Village/Town/City (min 3 chars)";
-    if (!loginId || loginId.length < 6) e.loginId = "Login ID must be at least 6 characters";
-    if (!password || !/(?=^.{8,30}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^_&*=.:]).*$/.test(password))
-      e.password = "Password must be 8+ chars with A-Z, a-z, 0-9 & special chars";
+    if (!password || password.length < 6)
+      e.password = "Password must be at least 6 characters long";
     if (password !== confirmPwd) e.confirmPwd = "Password and Confirm Password should be same";
     if (!captchaInput) e.captcha = "Please enter code";
     return e;
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
+    setSubmitMessage(null);
     const e = validate();
     setErrors(e);
     if (Object.keys(e).length === 0) {
@@ -234,7 +236,42 @@ export default function CitizenRegistration() {
         refreshCaptcha();
         return;
       }
-      setOtpVisible(true);
+      
+      try {
+        const payload = {
+          name: name,
+          middleName: fatherName,
+          Gender: gender,
+          EmailId: email,
+          mobileNo: mobile.num,
+          DOB: dob,
+          city: address.city,
+          country: address.country,
+          state: address.state,
+          district: address.district,
+          password: password,
+          address: `${address.house}, ${address.street}, ${address.colony}, ${address.tehsil}, ${address.pin}`
+        };
+
+        const { data, error } = await supabase
+          .from("user")
+          .insert([payload]);
+
+        if (error) {
+          console.error("Supabase error:", error);
+          setSubmitMessage({ type: "error", text: "Error saving data: " + error.message });
+          return;
+        }
+
+        setSubmitMessage({ type: "success", text: "User Registration Successful! Redirecting..." });
+        setTimeout(() => {
+          navigate("/");
+        }, 2000);
+
+      } catch (err) {
+        console.error("Unexpected error:", err);
+        setSubmitMessage({ type: "error", text: "An unexpected error occurred." });
+      }
     }
   };
 
@@ -407,6 +444,22 @@ export default function CitizenRegistration() {
             <span style={{ fontSize:10 }}>Characters are case sensitive</span>
             <Err msg={errors.captcha} />
           </div>
+
+          {submitMessage && (
+            <div style={{ 
+              margin: "10px auto", 
+              padding: "10px", 
+              width: "80%",
+              borderRadius: "4px",
+              textAlign: "center",
+              fontWeight: "bold",
+              color: submitMessage.type === "success" ? "#155724" : "#721c24",
+              backgroundColor: submitMessage.type === "success" ? "#d4edda" : "#f8d7da",
+              border: `1px solid ${submitMessage.type === "success" ? "#c3e6cb" : "#f5c6cb"}`
+            }}>
+              {submitMessage.text}
+            </div>
+          )}
 
           {/* ── Buttons ── */}
           <div style={{ textAlign:"center", padding:"10px 0 14px", borderTop:"1px solid #ccc", marginTop:8 }}>
