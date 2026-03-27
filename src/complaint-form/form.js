@@ -30,30 +30,17 @@ const Form = () => {
   const [landlineNo, setLandlineNo] = useState("");
   const [relativeName, setRelativeName] = useState("");
 
-  // ─── Address state (Present) ───
-  const [presentHouseNo, setPresentHouseNo] = useState("");
-  const [presentStreetName, setPresentStreetName] = useState("");
-  const [presentColony, setPresentColony] = useState("");
-  const [presentVillage, setPresentVillage] = useState("");
-  const [presentTehsil, setPresentTehsil] = useState("");
-  const [presentCountry, setPresentCountry] = useState("INDIA");
-  const [presentState, setPresentState] = useState("MAHARASHTRA");
-  const [presentDistrict, setPresentDistrict] = useState("");
-  const [presentPoliceStation, setPresentPoliceStation] = useState("");
-  const [presentPincode, setPresentPincode] = useState("");
-  const [sameForPermanent, setSameForPermanent] = useState("no");
-
-  // ─── Address state (Permanent) ───
-  const [permanentHouseNo, setPermanentHouseNo] = useState("");
-  const [permanentStreetName, setPermanentStreetName] = useState("");
-  const [permanentColony, setPermanentColony] = useState("");
-  const [permanentVillage, setPermanentVillage] = useState("");
-  const [permanentTehsil, setPermanentTehsil] = useState("");
-  const [permanentCountry, setPermanentCountry] = useState("INDIA");
-  const [permanentState, setPermanentState] = useState("MAHARASHTRA");
-  const [permanentDistrict, setPermanentDistrict] = useState("");
-  const [permanentPoliceStation, setPermanentPoliceStation] = useState("");
-  const [permanentPincode, setPermanentPincode] = useState("");
+  // ─── Address state ───
+  const [addressHouseNo, setAddressHouseNo] = useState("");
+  const [addressStreetName, setAddressStreetName] = useState("");
+  const [addressColony, setAddressColony] = useState("");
+  const [addressVillage, setAddressVillage] = useState("");
+  const [addressTehsil, setAddressTehsil] = useState("");
+  const [addressCountry, setAddressCountry] = useState("INDIA");
+  const [addressState, setAddressState] = useState("MAHARASHTRA");
+  const [addressDistrict, setAddressDistrict] = useState("");
+  const [addressPoliceStation, setAddressPoliceStation] = useState("");
+  const [addressPincode, setAddressPincode] = useState("");
 
   // ─── Identification state ───
   const [countryOfNationality, setCountryOfNationality] = useState("INDIA");
@@ -68,10 +55,8 @@ const Form = () => {
   const [placeOfIncident, setPlaceOfIncident] = useState("");
   const [typeOfIncident, setTypeOfIncident] = useState("");
   const [isDateTimeKnown, setIsDateTimeKnown] = useState("yes");
-  const [incidentDateFrom, setIncidentDateFrom] = useState("");
-  const [incidentTimeFrom, setIncidentTimeFrom] = useState("");
-  const [incidentDateTo, setIncidentDateTo] = useState("");
-  const [incidentTimeTo, setIncidentTimeTo] = useState("");
+  const [incidentDate, setIncidentDate] = useState("");
+  const [incidentTime, setIncidentTime] = useState("");
   const [incidentFileUpload, setIncidentFileUpload] = useState("");
 
   // ─── Complaint Submission Details state ───
@@ -108,29 +93,17 @@ const Form = () => {
             landlineCode={landlineCode} setLandlineCode={setLandlineCode}
             landlineNo={landlineNo} setLandlineNo={setLandlineNo}
             relativeName={relativeName} setRelativeName={setRelativeName}
-            // Address Present
-            presentHouseNo={presentHouseNo} setPresentHouseNo={setPresentHouseNo}
-            presentStreetName={presentStreetName} setPresentStreetName={setPresentStreetName}
-            presentColony={presentColony} setPresentColony={setPresentColony}
-            presentVillage={presentVillage} setPresentVillage={setPresentVillage}
-            presentTehsil={presentTehsil} setPresentTehsil={setPresentTehsil}
-            presentCountry={presentCountry} setPresentCountry={setPresentCountry}
-            presentState={presentState} setPresentState={setPresentState}
-            presentDistrict={presentDistrict} setPresentDistrict={setPresentDistrict}
-            presentPoliceStation={presentPoliceStation} setPresentPoliceStation={setPresentPoliceStation}
-            presentPincode={presentPincode} setPresentPincode={setPresentPincode}
-            sameForPermanent={sameForPermanent} setSameForPermanent={setSameForPermanent}
-            // Address Permanent
-            permanentHouseNo={permanentHouseNo} setPermanentHouseNo={setPermanentHouseNo}
-            permanentStreetName={permanentStreetName} setPermanentStreetName={setPermanentStreetName}
-            permanentColony={permanentColony} setPermanentColony={setPermanentColony}
-            permanentVillage={permanentVillage} setPermanentVillage={setPermanentVillage}
-            permanentTehsil={permanentTehsil} setPermanentTehsil={setPermanentTehsil}
-            permanentCountry={permanentCountry} setPermanentCountry={setPermanentCountry}
-            permanentState={permanentState} setPermanentState={setPermanentState}
-            permanentDistrict={permanentDistrict} setPermanentDistrict={setPermanentDistrict}
-            permanentPoliceStation={permanentPoliceStation} setPermanentPoliceStation={setPermanentPoliceStation}
-            permanentPincode={permanentPincode} setPermanentPincode={setPermanentPincode}
+            // Address
+            addressHouseNo={addressHouseNo} setAddressHouseNo={setAddressHouseNo}
+            addressStreetName={addressStreetName} setAddressStreetName={setAddressStreetName}
+            addressColony={addressColony} setAddressColony={setAddressColony}
+            addressVillage={addressVillage} setAddressVillage={setAddressVillage}
+            addressTehsil={addressTehsil} setAddressTehsil={setAddressTehsil}
+            addressCountry={addressCountry} setAddressCountry={setAddressCountry}
+            addressState={addressState} setAddressState={setAddressState}
+            addressDistrict={addressDistrict} setAddressDistrict={setAddressDistrict}
+            addressPoliceStation={addressPoliceStation} setAddressPoliceStation={setAddressPoliceStation}
+            addressPincode={addressPincode} setAddressPincode={setAddressPincode}
             // Identification
             countryOfNationality={countryOfNationality} setCountryOfNationality={setCountryOfNationality}
             identificationType={identificationType} setIdentificationType={setIdentificationType}
@@ -151,10 +124,8 @@ const Form = () => {
             placeOfIncident={placeOfIncident} setPlaceOfIncident={setPlaceOfIncident}
             typeOfIncident={typeOfIncident} setTypeOfIncident={setTypeOfIncident}
             isDateTimeKnown={isDateTimeKnown} setIsDateTimeKnown={setIsDateTimeKnown}
-            incidentDateFrom={incidentDateFrom} setIncidentDateFrom={setIncidentDateFrom}
-            incidentTimeFrom={incidentTimeFrom} setIncidentTimeFrom={setIncidentTimeFrom}
-            incidentDateTo={incidentDateTo} setIncidentDateTo={setIncidentDateTo}
-            incidentTimeTo={incidentTimeTo} setIncidentTimeTo={setIncidentTimeTo}
+            incidentDate={incidentDate} setIncidentDate={setIncidentDate}
+            incidentTime={incidentTime} setIncidentTime={setIncidentTime}
             incidentFileUpload={incidentFileUpload} setIncidentFileUpload={setIncidentFileUpload}
           />
         );
@@ -183,12 +154,10 @@ const Form = () => {
   const handleSubmit = () => {
     const formData = {
       personalInfo: { uid, firstName, middleName, lastName, relationType, dateOfBirth, natureOfComplaint, emailId, mobileCountryCode, mobileNo, landlineStd, landlineCode, landlineNo, relativeName },
-      presentAddress: { presentHouseNo, presentStreetName, presentColony, presentVillage, presentTehsil, presentCountry, presentState, presentDistrict, presentPoliceStation, presentPincode },
-      sameForPermanent,
-      permanentAddress: { permanentHouseNo, permanentStreetName, permanentColony, permanentVillage, permanentTehsil, permanentCountry, permanentState, permanentDistrict, permanentPoliceStation, permanentPincode },
+      address: { addressHouseNo, addressStreetName, addressColony, addressVillage, addressTehsil, addressCountry, addressState, addressDistrict, addressPoliceStation, addressPincode },
       identification: { countryOfNationality, identificationType, identificationNumber, identificationRecords },
       accusedRecords,
-      incident: { placeOfIncident, typeOfIncident, isDateTimeKnown, incidentDateFrom, incidentTimeFrom, incidentDateTo, incidentTimeTo },
+      incident: { placeOfIncident, typeOfIncident, isDateTimeKnown, incidentDate, incidentTime },
       submission: { knowPoliceStation, submissionDistrict, submissionPoliceStation },
       complaint: { dateOfComplaint, complaintDescription, remarks },
     };

@@ -110,7 +110,7 @@ function Err({ msg }) {
 function AddressBlock({ heading, prefix, data, onChange }) {
   return (
     <div style={{ marginTop:8 }}>
-      <h2 style={S.h2}>{heading}</h2>
+      {heading && <h2 style={S.h2 || {}}>{heading}</h2>}
       <table width="100%" style={{ borderCollapse:"collapse" }}>
         <tbody>
           <tr>
@@ -184,9 +184,7 @@ export default function CitizenRegistration() {
   const [dob, setDob] = useState("");
   // Removed idType and idNo
   // Address
-  const [present, setPresent] = useState(emptyAddr());
-  const [permanent, setPermanent] = useState(emptyAddr());
-  const [sameAsPermanent, setSameAsPermanent] = useState(false);
+  const [address, setAddress] = useState(emptyAddr());
   // Login
   const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
@@ -202,11 +200,9 @@ export default function CitizenRegistration() {
 
   const refreshCaptcha = () => { setCaptchaText(generateCaptcha()); setCaptchaInput(""); };
 
-  const handlePresentChange = (k, v) => {
-    setPresent(p => ({ ...p, [k]:v }));
-    if (sameAsPermanent) setPermanent(p => ({ ...p, [k]:v }));
+  const handleAddressChange = (k, v) => {
+    setAddress(p => ({ ...p, [k]:v }));
   };
-  const handlePermanentChange = (k, v) => setPermanent(p => ({ ...p, [k]:v }));
 
   const validate = () => {
     const e = {};
@@ -217,10 +213,10 @@ export default function CitizenRegistration() {
     if (!email || !/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) e.email = "Please enter valid Email ID";
     if (!dob) e.dob = "Please enter Date of Birth";
     // Removed idType and idNo validation
-    if (!present.country) e.presCountry = "Please select Country";
-    if (!present.state) e.presState = "Please select State";
-    if (!present.district) e.presDistrict = "Please select District";
-    if (!present.city || present.city.length < 3) e.presCity = "Please enter Village/Town/City (min 3 chars)";
+    if (!address.country) e.addressCountry = "Please select Country";
+    if (!address.state) e.addressState = "Please select State";
+    if (!address.district) e.addressDistrict = "Please select District";
+    if (!address.city || address.city.length < 3) e.addressCity = "Please enter Village/Town/City (min 3 chars)";
     if (!loginId || loginId.length < 6) e.loginId = "Login ID must be at least 6 characters";
     if (!password || !/(?=^.{8,30}$)(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^_&*=.:]).*$/.test(password))
       e.password = "Password must be 8+ chars with A-Z, a-z, 0-9 & special chars";
@@ -247,7 +243,7 @@ export default function CitizenRegistration() {
     setName(""); setFatherName(""); setGender(""); setMobile({cc:"91",num:""});
     setLandline({cc:"",area:"",num:""}); setEmail(""); setDob("");
     // Removed setIdType and setIdNo
-    setPresent(emptyAddr()); setPermanent(emptyAddr()); setSameAsPermanent(false);
+    setAddress(emptyAddr());
     setLoginId(""); setPassword(""); setConfirmPwd(""); // Removed setSecQ and setSecA
     setCaptchaInput(""); refreshCaptcha(); setErrors({});
   };
@@ -372,21 +368,9 @@ export default function CitizenRegistration() {
           <fieldset style={{ ...S.fieldset, marginTop:8 }}>
             <legend style={S.legend}>Address</legend>
 
-            <AddressBlock heading="Present Address" data={present} onChange={handlePresentChange} />
-            {errors.presCity && <Err msg={errors.presCity} />}
-            {errors.presCountry && <Err msg={errors.presCountry} />}
-
-            <div style={{ marginTop:8, marginBottom:4 }}>
-              <label style={{ fontSize:12 }}>
-                Same for Permanent:&nbsp;
-                <input id="reg-same-permanent-yes" type="radio" name="samePerma" onChange={()=>{ setSameAsPermanent(true); setPermanent({...present}); }} />{" Yes "}
-                <input id="reg-same-permanent-no" type="radio" name="samePerma" defaultChecked onChange={()=>setSameAsPermanent(false)} />{" No"}
-              </label>
-            </div>
-
-            {!sameAsPermanent && (
-              <AddressBlock heading="Permanent Address" data={permanent} onChange={handlePermanentChange} />
-            )}
+            <AddressBlock heading="" data={address} onChange={handleAddressChange} />
+            {errors.addressCity && <Err msg={errors.addressCity} />}
+            {errors.addressCountry && <Err msg={errors.addressCountry} />}
           </fieldset>
 
           {/* ── Login Details ── */}

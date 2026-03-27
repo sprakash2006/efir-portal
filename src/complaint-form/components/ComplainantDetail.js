@@ -13,19 +13,12 @@ const ComplainantDetail = ({
   mobileNo, setMobileNo, landlineStd, setLandlineStd,
   landlineCode, setLandlineCode, landlineNo, setLandlineNo,
   relativeName, setRelativeName,
-  // Address Present
-  presentHouseNo, setPresentHouseNo, presentStreetName, setPresentStreetName,
-  presentColony, setPresentColony, presentVillage, setPresentVillage,
-  presentTehsil, setPresentTehsil, presentCountry, setPresentCountry,
-  presentState, setPresentState, presentDistrict, setPresentDistrict,
-  presentPoliceStation, setPresentPoliceStation, presentPincode, setPresentPincode,
-  sameForPermanent, setSameForPermanent,
-  // Address Permanent
-  permanentHouseNo, setPermanentHouseNo, permanentStreetName, setPermanentStreetName,
-  permanentColony, setPermanentColony, permanentVillage, setPermanentVillage,
-  permanentTehsil, setPermanentTehsil, permanentCountry, setPermanentCountry,
-  permanentState, setPermanentState, permanentDistrict, setPermanentDistrict,
-  permanentPoliceStation, setPermanentPoliceStation, permanentPincode, setPermanentPincode,
+  // Address
+  addressHouseNo, setAddressHouseNo, addressStreetName, setAddressStreetName,
+  addressColony, setAddressColony, addressVillage, setAddressVillage,
+  addressTehsil, setAddressTehsil, addressCountry, setAddressCountry,
+  addressState, setAddressState, addressDistrict, setAddressDistrict,
+  addressPoliceStation, setAddressPoliceStation, addressPincode, setAddressPincode,
   // Identification
   countryOfNationality, setCountryOfNationality, identificationType, setIdentificationType,
   identificationNumber, setIdentificationNumber, identificationRecords, setIdentificationRecords,
@@ -60,27 +53,16 @@ const ComplainantDetail = ({
       case "address":
         return (
           <Address
-            presentHouseNo={presentHouseNo} setPresentHouseNo={setPresentHouseNo}
-            presentStreetName={presentStreetName} setPresentStreetName={setPresentStreetName}
-            presentColony={presentColony} setPresentColony={setPresentColony}
-            presentVillage={presentVillage} setPresentVillage={setPresentVillage}
-            presentTehsil={presentTehsil} setPresentTehsil={setPresentTehsil}
-            presentCountry={presentCountry} setPresentCountry={setPresentCountry}
-            presentState={presentState} setPresentState={setPresentState}
-            presentDistrict={presentDistrict} setPresentDistrict={setPresentDistrict}
-            presentPoliceStation={presentPoliceStation} setPresentPoliceStation={setPresentPoliceStation}
-            presentPincode={presentPincode} setPresentPincode={setPresentPincode}
-            sameForPermanent={sameForPermanent} setSameForPermanent={setSameForPermanent}
-            permanentHouseNo={permanentHouseNo} setPermanentHouseNo={setPermanentHouseNo}
-            permanentStreetName={permanentStreetName} setPermanentStreetName={setPermanentStreetName}
-            permanentColony={permanentColony} setPermanentColony={setPermanentColony}
-            permanentVillage={permanentVillage} setPermanentVillage={setPermanentVillage}
-            permanentTehsil={permanentTehsil} setPermanentTehsil={setPermanentTehsil}
-            permanentCountry={permanentCountry} setPermanentCountry={setPermanentCountry}
-            permanentState={permanentState} setPermanentState={setPermanentState}
-            permanentDistrict={permanentDistrict} setPermanentDistrict={setPermanentDistrict}
-            permanentPoliceStation={permanentPoliceStation} setPermanentPoliceStation={setPermanentPoliceStation}
-            permanentPincode={permanentPincode} setPermanentPincode={setPermanentPincode}
+            addressHouseNo={addressHouseNo} setAddressHouseNo={setAddressHouseNo}
+            addressStreetName={addressStreetName} setAddressStreetName={setAddressStreetName}
+            addressColony={addressColony} setAddressColony={setAddressColony}
+            addressVillage={addressVillage} setAddressVillage={setAddressVillage}
+            addressTehsil={addressTehsil} setAddressTehsil={setAddressTehsil}
+            addressCountry={addressCountry} setAddressCountry={setAddressCountry}
+            addressState={addressState} setAddressState={setAddressState}
+            addressDistrict={addressDistrict} setAddressDistrict={setAddressDistrict}
+            addressPoliceStation={addressPoliceStation} setAddressPoliceStation={setAddressPoliceStation}
+            addressPincode={addressPincode} setAddressPincode={setAddressPincode}
           />
         );
       case "identification":

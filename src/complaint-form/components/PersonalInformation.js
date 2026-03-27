@@ -38,7 +38,7 @@ const PersonalInformation = ({
             <label className="form-label" htmlFor="pi-last-name">Last Name</label>
             <input id="pi-last-name" type="text" className="form-input form-input-wide" value={lastName} onChange={(e) => setLastName(e.target.value)} />
           </div>
-          <div className="form-row">
+          <div className="form-row" style={{ visibility: "hidden" }}>
             <label className="form-label" htmlFor="pi-relation-type">Relation Type</label>
             <select id="pi-relation-type" className="form-select" value={relationType} onChange={(e) => setRelationType(e.target.value)}>
               <option value="">Select</option>
@@ -84,7 +84,7 @@ const PersonalInformation = ({
               <input id="pi-landline-no" type="text" className="form-input form-input-landline" value={landlineNo} onChange={(e) => setLandlineNo(e.target.value)} />
             </div>
           </div>
-          <div className="form-row">
+          <div className="form-row" style={{ visibility: "hidden" }}>
             <label className="form-label" htmlFor="pi-relative-name">Relative Name</label>
             <input id="pi-relative-name" type="text" className="form-input form-input-wide" value={relativeName} onChange={(e) => setRelativeName(e.target.value)} />
           </div>

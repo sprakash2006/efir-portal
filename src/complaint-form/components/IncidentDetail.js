@@ -4,17 +4,14 @@ const IncidentDetail = ({
   placeOfIncident, setPlaceOfIncident,
   typeOfIncident, setTypeOfIncident,
   isDateTimeKnown, setIsDateTimeKnown,
-  incidentDateFrom, setIncidentDateFrom,
-  incidentTimeFrom, setIncidentTimeFrom,
-  incidentDateTo, setIncidentDateTo,
-  incidentTimeTo, setIncidentTimeTo,
+  incidentDate, setIncidentDate,
+  incidentTime, setIncidentTime,
   incidentFileUpload, setIncidentFileUpload,
 }) => {
   const handleClear = () => {
     setPlaceOfIncident(""); setTypeOfIncident("");
-    setIsDateTimeKnown("yes"); setIncidentDateFrom("");
-    setIncidentTimeFrom(""); setIncidentDateTo("");
-    setIncidentTimeTo(""); setIncidentFileUpload("");
+    setIsDateTimeKnown("yes"); setIncidentDate("");
+    setIncidentTime(""); setIncidentFileUpload("");
   };
 
   return (
@@ -48,19 +45,11 @@ const IncidentDetail = ({
             </div>
           </div>
           <div className="form-row">
-            <label className="form-label" htmlFor="incident-date-from">Date of Incident (From) <span className="required">*</span></label>
+            <label className="form-label" htmlFor="incident-date">Date of Incident <span className="required">*</span></label>
             <div className="datetime-group">
-              <input id="incident-date-from" type="date" className="form-input form-input-date" value={incidentDateFrom} onChange={(e) => setIncidentDateFrom(e.target.value)} />
+              <input id="incident-date" type="date" className="form-input form-input-date" value={incidentDate} onChange={(e) => setIncidentDate(e.target.value)} />
               <span className="time-label">HH:MM</span>
-              <input id="incident-time-from" type="text" className="form-input form-input-time" value={incidentTimeFrom} onChange={(e) => setIncidentTimeFrom(e.target.value)} placeholder="" />
-            </div>
-          </div>
-          <div className="form-row">
-            <label className="form-label" htmlFor="incident-date-to">Date of Incident (To) <span className="required">*</span></label>
-            <div className="datetime-group">
-              <input id="incident-date-to" type="date" className="form-input form-input-date" value={incidentDateTo} onChange={(e) => setIncidentDateTo(e.target.value)} />
-              <span className="time-label">HH:MM</span>
-              <input id="incident-time-to" type="text" className="form-input form-input-time" value={incidentTimeTo} onChange={(e) => setIncidentTimeTo(e.target.value)} placeholder="" />
+              <input id="incident-time" type="text" className="form-input form-input-time" value={incidentTime} onChange={(e) => setIncidentTime(e.target.value)} placeholder="" />
             </div>
           </div>
         </div>
