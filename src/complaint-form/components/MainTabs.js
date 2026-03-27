@@ -14,6 +14,7 @@ const MainTabs = ({ activeMainTab, setActiveMainTab }) => {
       {tabs.map((tab) => (
         <div
           key={tab.key}
+          id={`tab-${tab.key}`}
           className={`main-tab ${activeMainTab === tab.key ? "main-tab-active" : ""}`}
           onClick={() => setActiveMainTab(tab.key)}
         >

@@ -103,6 +103,7 @@ const ComplainantDetail = ({
         {subTabs.map((tab) => (
           <div
             key={tab.key}
+            id={`subtab-${tab.key}`}
             className={`sub-tab ${activeSubTab === tab.key ? "sub-tab-active" : ""}`}
             onClick={() => setActiveSubTab(tab.key)}
           >

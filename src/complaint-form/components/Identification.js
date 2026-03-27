@@ -34,14 +34,14 @@ const Identification = ({
     <div className="identification-section">
       <div className="form-column">
         <div className="form-row">
-          <label className="form-label">Country of Nationality <span className="required">*</span></label>
-          <select className="form-select" value={countryOfNationality} onChange={(e) => setCountryOfNationality(e.target.value)}>
+          <label className="form-label" htmlFor="id-country-nationality">Country of Nationality <span className="required">*</span></label>
+          <select id="id-country-nationality" className="form-select" value={countryOfNationality} onChange={(e) => setCountryOfNationality(e.target.value)}>
             <option value="INDIA">INDIA</option>
           </select>
         </div>
         <div className="form-row">
-          <label className="form-label">Identification Type</label>
-          <select className="form-select" value={identificationType} onChange={(e) => setIdentificationType(e.target.value)}>
+          <label className="form-label" htmlFor="id-type">Identification Type</label>
+          <select id="id-type" className="form-select" value={identificationType} onChange={(e) => setIdentificationType(e.target.value)}>
             <option value="">Select</option>
             <option value="Aadhaar">Aadhaar</option>
             <option value="PAN">PAN Card</option>
@@ -51,13 +51,13 @@ const Identification = ({
           </select>
         </div>
         <div className="form-row">
-          <label className="form-label">Identification Number</label>
-          <input type="text" className="form-input form-input-wide" value={identificationNumber} onChange={(e) => setIdentificationNumber(e.target.value)} />
+          <label className="form-label" htmlFor="id-number">Identification Number</label>
+          <input id="id-number" type="text" className="form-input form-input-wide" value={identificationNumber} onChange={(e) => setIdentificationNumber(e.target.value)} />
         </div>
       </div>
 
       <div className="form-actions" style={{ justifyContent: "flex-end" }}>
-        <button className="btn-add" onClick={handleAdd}>Add</button>
+        <button id="id-btn-add" className="btn-add" onClick={handleAdd}>Add</button>
       </div>
 
       {/* ─── Table ─── */}
@@ -87,7 +87,7 @@ const Identification = ({
                   <td>{record.passportIssuePlace}</td>
                   <td>{record.passportIssueDate}</td>
                   <td>
-                    <button className="btn-delete-row" onClick={() => handleDelete(record.id)}>✕</button>
+                    <button id={`id-btn-delete-${index}`} className="btn-delete-row" onClick={() => handleDelete(record.id)}>✕</button>
                   </td>
                 </tr>
               ))
@@ -97,7 +97,7 @@ const Identification = ({
       </div>
 
       <div className="form-actions">
-        <button className="btn-clear" onClick={handleClear}>Clear</button>
+        <button id="id-btn-clear" className="btn-clear" onClick={handleClear}>Clear</button>
       </div>
     </div>
   );

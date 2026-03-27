@@ -19,11 +19,11 @@ const ComplaintSubmissionDetails = ({
         <label className="form-label">Do you know your Police Station? <span className="required">*</span></label>
         <div className="radio-group">
           <label className="radio-label">
-            <input type="radio" name="knowPoliceStation" value="yes" checked={knowPoliceStation === "yes"} onChange={(e) => setKnowPoliceStation(e.target.value)} />
+            <input id="sub-know-ps-yes" type="radio" name="knowPoliceStation" value="yes" checked={knowPoliceStation === "yes"} onChange={(e) => setKnowPoliceStation(e.target.value)} />
             Yes
           </label>
           <label className="radio-label">
-            <input type="radio" name="knowPoliceStation" value="no" checked={knowPoliceStation === "no"} onChange={(e) => setKnowPoliceStation(e.target.value)} />
+            <input id="sub-know-ps-no" type="radio" name="knowPoliceStation" value="no" checked={knowPoliceStation === "no"} onChange={(e) => setKnowPoliceStation(e.target.value)} />
             No
           </label>
         </div>
@@ -31,8 +31,8 @@ const ComplaintSubmissionDetails = ({
       <div className="form-two-columns">
         <div className="form-column">
           <div className="form-row">
-            <label className="form-label">District <span className="required">*</span></label>
-            <select className="form-select" value={submissionDistrict} onChange={(e) => setSubmissionDistrict(e.target.value)}>
+            <label className="form-label" htmlFor="sub-district">District <span className="required">*</span></label>
+            <select id="sub-district" className="form-select" value={submissionDistrict} onChange={(e) => setSubmissionDistrict(e.target.value)}>
               <option value="">Select</option>
               {districtOptions.map(d => <option key={d} value={d}>{d}</option>)}
             </select>
@@ -40,8 +40,8 @@ const ComplaintSubmissionDetails = ({
         </div>
         <div className="form-column">
           <div className="form-row">
-            <label className="form-label">Police Station <span className="required">*</span></label>
-            <select className="form-select" value={submissionPoliceStation} onChange={(e) => setSubmissionPoliceStation(e.target.value)}>
+            <label className="form-label" htmlFor="sub-police-station">Police Station <span className="required">*</span></label>
+            <select id="sub-police-station" className="form-select" value={submissionPoliceStation} onChange={(e) => setSubmissionPoliceStation(e.target.value)}>
               <option value="">Select</option>
               <option value="station1">Station 1</option>
               <option value="station2">Station 2</option>
@@ -51,7 +51,7 @@ const ComplaintSubmissionDetails = ({
       </div>
 
       <div className="form-actions">
-        <button className="btn-clear" onClick={handleClear}>Clear</button>
+        <button id="sub-btn-clear" className="btn-clear" onClick={handleClear}>Clear</button>
       </div>
     </div>
   );

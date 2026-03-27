@@ -50,8 +50,8 @@ const AccusedDetail = ({ accusedRecords, setAccusedRecords }) => {
                   <td>{index + 1}</td>
                   <td>{record.name}</td>
                   <td>{record.address}</td>
-                  <td><button className="btn-edit-row">Edit</button></td>
-                  <td><button className="btn-delete-row" onClick={() => handleDelete(record.id)}>Delete</button></td>
+                  <td><button id={`accused-btn-edit-${index}`} className="btn-edit-row">Edit</button></td>
+                  <td><button id={`accused-btn-delete-${index}`} className="btn-delete-row" onClick={() => handleDelete(record.id)}>Delete</button></td>
                 </tr>
               ))
             )}
@@ -62,21 +62,21 @@ const AccusedDetail = ({ accusedRecords, setAccusedRecords }) => {
       {showAddForm && (
         <div className="add-accused-form">
           <div className="form-row">
-            <label className="form-label">Name</label>
-            <input type="text" className="form-input form-input-wide" value={newName} onChange={(e) => setNewName(e.target.value)} />
+            <label className="form-label" htmlFor="accused-name">Name</label>
+            <input id="accused-name" type="text" className="form-input form-input-wide" value={newName} onChange={(e) => setNewName(e.target.value)} />
           </div>
           <div className="form-row">
-            <label className="form-label">Address</label>
-            <input type="text" className="form-input form-input-wide" value={newAddress} onChange={(e) => setNewAddress(e.target.value)} />
+            <label className="form-label" htmlFor="accused-address">Address</label>
+            <input id="accused-address" type="text" className="form-input form-input-wide" value={newAddress} onChange={(e) => setNewAddress(e.target.value)} />
           </div>
           <div className="form-actions">
-            <button className="btn-add" onClick={handleSave}>Save</button>
+            <button id="accused-btn-save" className="btn-add" onClick={handleSave}>Save</button>
           </div>
         </div>
       )}
 
       <div className="form-actions" style={{ justifyContent: "flex-end" }}>
-        <button className="btn-add" onClick={handleAddNew}>Add New</button>
+        <button id="accused-btn-add-new" className="btn-add" onClick={handleAddNew}>Add New</button>
       </div>
     </div>
   );

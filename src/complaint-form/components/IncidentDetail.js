@@ -23,12 +23,12 @@ const IncidentDetail = ({
         {/* ─── Left Column ─── */}
         <div className="form-column">
           <div className="form-row form-row-textarea">
-            <label className="form-label">Place of Incident <span className="required">*</span></label>
-            <textarea className="form-textarea" rows="3" value={placeOfIncident} onChange={(e) => setPlaceOfIncident(e.target.value)} />
+            <label className="form-label" htmlFor="incident-place">Place of Incident <span className="required">*</span></label>
+            <textarea id="incident-place" className="form-textarea" rows="3" value={placeOfIncident} onChange={(e) => setPlaceOfIncident(e.target.value)} />
           </div>
           <div className="form-row form-row-textarea">
-            <label className="form-label">Type of Incident</label>
-            <textarea className="form-textarea" rows="3" value={typeOfIncident} onChange={(e) => setTypeOfIncident(e.target.value)} />
+            <label className="form-label" htmlFor="incident-type">Type of Incident</label>
+            <textarea id="incident-type" className="form-textarea" rows="3" value={typeOfIncident} onChange={(e) => setTypeOfIncident(e.target.value)} />
           </div>
         </div>
 
@@ -38,44 +38,44 @@ const IncidentDetail = ({
             <label className="form-label">Is Date / Time of Incident Known? <span className="required">*</span></label>
             <div className="radio-group">
               <label className="radio-label">
-                <input type="radio" name="isDateTimeKnown" value="yes" checked={isDateTimeKnown === "yes"} onChange={(e) => setIsDateTimeKnown(e.target.value)} />
+                <input id="incident-datetime-known-yes" type="radio" name="isDateTimeKnown" value="yes" checked={isDateTimeKnown === "yes"} onChange={(e) => setIsDateTimeKnown(e.target.value)} />
                 Yes
               </label>
               <label className="radio-label">
-                <input type="radio" name="isDateTimeKnown" value="no" checked={isDateTimeKnown === "no"} onChange={(e) => setIsDateTimeKnown(e.target.value)} />
+                <input id="incident-datetime-known-no" type="radio" name="isDateTimeKnown" value="no" checked={isDateTimeKnown === "no"} onChange={(e) => setIsDateTimeKnown(e.target.value)} />
                 No
               </label>
             </div>
           </div>
           <div className="form-row">
-            <label className="form-label">Date of Incident (From) <span className="required">*</span></label>
+            <label className="form-label" htmlFor="incident-date-from">Date of Incident (From) <span className="required">*</span></label>
             <div className="datetime-group">
-              <input type="date" className="form-input form-input-date" value={incidentDateFrom} onChange={(e) => setIncidentDateFrom(e.target.value)} />
+              <input id="incident-date-from" type="date" className="form-input form-input-date" value={incidentDateFrom} onChange={(e) => setIncidentDateFrom(e.target.value)} />
               <span className="time-label">HH:MM</span>
-              <input type="text" className="form-input form-input-time" value={incidentTimeFrom} onChange={(e) => setIncidentTimeFrom(e.target.value)} placeholder="" />
+              <input id="incident-time-from" type="text" className="form-input form-input-time" value={incidentTimeFrom} onChange={(e) => setIncidentTimeFrom(e.target.value)} placeholder="" />
             </div>
           </div>
           <div className="form-row">
-            <label className="form-label">Date of Incident (To) <span className="required">*</span></label>
+            <label className="form-label" htmlFor="incident-date-to">Date of Incident (To) <span className="required">*</span></label>
             <div className="datetime-group">
-              <input type="date" className="form-input form-input-date" value={incidentDateTo} onChange={(e) => setIncidentDateTo(e.target.value)} />
+              <input id="incident-date-to" type="date" className="form-input form-input-date" value={incidentDateTo} onChange={(e) => setIncidentDateTo(e.target.value)} />
               <span className="time-label">HH:MM</span>
-              <input type="text" className="form-input form-input-time" value={incidentTimeTo} onChange={(e) => setIncidentTimeTo(e.target.value)} placeholder="" />
+              <input id="incident-time-to" type="text" className="form-input form-input-time" value={incidentTimeTo} onChange={(e) => setIncidentTimeTo(e.target.value)} placeholder="" />
             </div>
           </div>
         </div>
       </div>
 
       <div className="form-actions">
-        <button className="btn-clear" onClick={handleClear}>Clear</button>
+        <button id="incident-btn-clear" className="btn-clear" onClick={handleClear}>Clear</button>
       </div>
 
       {/* ─── File Upload ─── */}
       <fieldset className="file-upload-panel">
         <legend>File Upload</legend>
         <div className="file-upload-row">
-          <input type="text" className="form-input form-input-file" value={incidentFileUpload} readOnly />
-          <button className="btn-browse">🔍</button>
+          <input id="incident-file-upload" type="text" className="form-input form-input-file" value={incidentFileUpload} readOnly />
+          <button id="incident-btn-browse" className="btn-browse">🔍</button>
         </div>
       </fieldset>
     </div>
