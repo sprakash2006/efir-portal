@@ -1,0 +1,63 @@
+{
+  "credentials": {
+    "username": "user@example.com",
+    "password": "password123"
+  },
+  "complainantDetail": {
+    "personalInformation": {
+      "uid": "UID001",
+      "firstName": "Rahul",
+      "middleName": "Kumar",
+      "lastName": "Sharma",
+      "natureOfComplaint": "Theft",
+      "emailId": "rahul.sharma@example.com",
+      "mobileCountryCode": "91",
+      "mobileNo": "9876543210",
+      "landlineStd": "",
+      "landlineCode": "",
+      "landlineNo": "",
+      "dateOfBirth": "1990-05-20"
+    },
+    "address": {
+      "houseNo": "42",
+      "streetName": "MG Road",
+      "colony": "Shivaji Nagar",
+      "village": "Pune",
+      "tehsil": "Haveli",
+      "country": "INDIA",
+      "state": "MAHARASHTRA",
+      "district": "Pune",
+      "policeStation": "station1",
+      "pincode": "411001"
+    },
+    "identification": {
+      "countryOfNationality": "INDIA",
+      "records": [
+        { "type": "Aadhaar", "number": "1234-5678-9012" }
+      ]
+    }
+  },
+  "accusedDetail": [
+    {
+      "name": "Unknown Person",
+      "address": "Unknown, Pune"
+    }
+  ],
+  "incidentDetail": {
+    "placeOfIncident": "MG Road near City Mall, Pune",
+    "typeOfIncident": "Theft of mobile phone",
+    "isDateTimeKnown": "yes",
+    "incidentDate": "2026-03-25",
+    "incidentTime": "14:30"
+  },
+  "complaintSubmissionDetails": {
+    "knowPoliceStation": "yes",
+    "district": "PUNE",
+    "policeStation": "station1"
+  },
+  "complaintDetail": {
+    "dateOfComplaint": "2026-03-28",
+    "description": "My mobile phone (Samsung Galaxy S23) was stolen from my pocket while I was walking on MG Road near City Mall, Pune on 25th March 2026 at approximately 2:30 PM. I did not notice the thief. I request the police to investigate and recover my phone.",
+    "remarks": "IMEI: 123456789012345"
+  }
+}

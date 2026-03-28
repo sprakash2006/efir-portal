@@ -14,9 +14,6 @@ const Address = ({
     setAddressPincode("");
   };
 
-  const countryOptions = ["INDIA"];
-  const stateOptions = ["MAHARASHTRA", "GOA", "KARNATAKA", "GUJARAT", "RAJASTHAN"];
-  const districtOptions = ["DHARASHIV", "PUNE", "MUMBAI", "NAGPUR", "NASHIK", "SOLAPUR"];
 
   return (
     <div className="address-section">
@@ -49,22 +46,15 @@ const Address = ({
         <div className="form-column">
           <div className="form-row">
             <label className="form-label" htmlFor="addr-country">Country <span className="required">*</span></label>
-            <select id="addr-country" className="form-select" value={addressCountry} onChange={(e) => setAddressCountry(e.target.value)}>
-              {countryOptions.map(c => <option key={c} value={c}>{c}</option>)}
-            </select>
+            <input id="addr-country" type="text" className="form-input" value={addressCountry} onChange={(e) => setAddressCountry(e.target.value)} />
           </div>
           <div className="form-row">
             <label className="form-label" htmlFor="addr-state">State <span className="required">*</span></label>
-            <select id="addr-state" className="form-select" value={addressState} onChange={(e) => setAddressState(e.target.value)}>
-              {stateOptions.map(s => <option key={s} value={s}>{s}</option>)}
-            </select>
+            <input id="addr-state" type="text" className="form-input" value={addressState} onChange={(e) => setAddressState(e.target.value)} />
           </div>
           <div className="form-row">
             <label className="form-label" htmlFor="addr-district">District <span className="required">*</span></label>
-            <select id="addr-district" className="form-select" value={addressDistrict} onChange={(e) => setAddressDistrict(e.target.value)}>
-              <option value="">Select</option>
-              {districtOptions.map(d => <option key={d} value={d}>{d}</option>)}
-            </select>
+            <input id="addr-district" type="text" className="form-input" value={addressDistrict} onChange={(e) => setAddressDistrict(e.target.value)} />
           </div>
           <div className="form-row">
             <label className="form-label" htmlFor="addr-police-station">Police Station</label>

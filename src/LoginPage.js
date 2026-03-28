@@ -133,7 +133,10 @@ function OtpModal({ visible, onClose }) {
           style={styles.submitBtn}
           onClick={() => {
             if (otp === "12345") {
-              navigate("/home");
+              sessionStorage.setItem("isLoggedIn", "true");
+              navigate("/home", { replace: true });
+            } else {
+              alert("Invalid OTP");
             }
           }}
         >
@@ -153,6 +156,12 @@ function OtpModal({ visible, onClose }) {
 
 export default function LoginPage() {
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("isLoggedIn") === "true") {
+      navigate("/home", { replace: true });
+    }
+  }, [navigate]);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [captchaInput, setCaptchaInput] = useState("");

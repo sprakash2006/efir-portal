@@ -1,11 +1,17 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const CCTNSClone = () => {
   const [showMain, setShowMain] = useState(false);
   const [showSub, setShowSub] = useState(false);
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (sessionStorage.getItem("isLoggedIn") !== "true") {
+      navigate("/", { replace: true });
+    }
+  }, [navigate]);
 
   const itemStyle = {
     padding: "8px 10px",
@@ -36,7 +42,16 @@ const CCTNSClone = () => {
         <span style={{ color: "#fff", fontSize: "18px", cursor: "pointer", marginRight: "6px" }}>💬</span>
         <span style={{ color: "#fff", fontSize: "18px", cursor: "pointer", marginRight: "6px" }}>❓</span>
         <span style={{ color: "#fff", fontSize: "18px", cursor: "pointer", marginRight: "6px" }}>👤</span>
-        <span style={{ color: "#fff", fontSize: "18px", cursor: "pointer", marginRight: "6px" }}>🔒</span>
+        <span 
+          style={{ color: "#fff", fontSize: "18px", cursor: "pointer", marginRight: "6px" }}
+          title="Logout"
+          onClick={() => {
+            sessionStorage.removeItem("isLoggedIn");
+            navigate("/", { replace: true });
+          }}
+        >
+          🔒
+        </span>
       </div>
 
       {/* Main Content Area */}

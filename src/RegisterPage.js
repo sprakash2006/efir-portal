@@ -12,28 +12,6 @@ function generateCaptcha(len = 6) {
   return s;
 }
 
-const INDIAN_STATES = [
-  "ANDAMAN & NICOBAR","ANDHRA PRADESH","ARUNACHAL PRADESH","ASSAM","BIHAR",
-  "CHANDIGARH","CHHATTISGARH","DADRA & NAGAR HAVELI","DAMAN & DIU","DELHI",
-  "GOA","GUJARAT","HARYANA","HIMACHAL PRADESH","JAMMU AND KASHMIR",
-  "JHARKHAND","KARNATAKA","KERALA","LAKSHADWEEP","MADHYA PRADESH",
-  "MAHARASHTRA","MANIPUR","MEGHALAYA","MIZORAM","NAGALAND","ODISHA",
-  "PUDUCHERRY","PUNJAB","RAJASTHAN","SIKKIM","TAMIL NADU","TELENGANA",
-  "TRIPURA","UTTAR PRADESH","UTTARAKHAND","WEST BENGAL",
-];
-
-const MH_DISTRICTS = [
-  "AHILYANAGAR","AKOLA","AMRAVATI CITY","AMRAVATI RURAL","BEED","BHANDARA",
-  "BRIHAN MUMBAI CITY","BULDHANA","CHANDRAPUR","CHHATRAPATI SAMBHAJINAGAR (RURAL)",
-  "CHHATRAPATI SAMBHAJINAGAR CITY","DHARASHIV","DHULE","GADCHIROLI","GONDIA",
-  "HINGOLI","JALGAON","JALNA","KOLHAPUR","LATUR","NAGPUR CITY","NAGPUR RURAL",
-  "NANDED","NANDURBAR","NASHIK CITY","NASHIK RURAL","NAVI MUMBAI","PALGHAR",
-  "PARBHANI","PIMPRI-CHINCHWAD","PUNE CITY","PUNE RURAL","RAIGAD",
-  "RAILWAY MUMBAI","RAILWAY NAGPUR","RAILWAY PUNE","RATNAGIRI","SANGLI",
-  "SATARA","SINDHUDURG","SOLAPUR CITY","SOLAPUR RURAL","THANE CITY",
-  "THANE RURAL","WARDHA","WASHIM","YAVATMAL",
-];
-
 
 
 // ─── Captcha Canvas ───────────────────────────────────────────────────────────
@@ -121,13 +99,7 @@ function AddressBlock({ heading, prefix, data, onChange }) {
             </td>
             <Label required><label htmlFor={`${prefix}-country`}>Country</label></Label>
             <td style={S.valTd}>
-              <select id={`${prefix}-country`} value={data.country} onChange={e=>onChange("country",e.target.value)} style={{ ...S.select, width:230 }}>
-                <option value="">Select</option>
-                <option value="INDIA">INDIA</option>
-                <option value="USA">UNITED STATES OF AMERICA (USA)</option>
-                <option value="UK">UNITED KINGDOM (UK)</option>
-                <option value="UAE">UNITED ARAB EMIRATES (UAE)</option>
-              </select>
+              <input id={`${prefix}-country`} type="text" value={data.country} onChange={e=>onChange("country",e.target.value)} style={{ ...S.input, width:230 }}/>
             </td>
           </tr>
           <tr>
@@ -135,10 +107,7 @@ function AddressBlock({ heading, prefix, data, onChange }) {
             <td style={S.valTd}><input id={`${prefix}-street`} maxLength={30} value={data.street} onChange={e=>onChange("street",e.target.value)} style={{ ...S.input, width:250 }}/></td>
             <Label required><label htmlFor={`${prefix}-state`}>State</label></Label>
             <td style={S.valTd}>
-              <select id={`${prefix}-state`} value={data.state} onChange={e=>onChange("state",e.target.value)} style={{ ...S.select, width:230 }}>
-                <option value="">Select</option>
-                {INDIAN_STATES.map(s=><option key={s} value={s}>{s}</option>)}
-              </select>
+              <input id={`${prefix}-state`} type="text" value={data.state} onChange={e=>onChange("state",e.target.value)} style={{ ...S.input, width:230 }}/>
             </td>
           </tr>
           <tr>
@@ -146,10 +115,7 @@ function AddressBlock({ heading, prefix, data, onChange }) {
             <td style={S.valTd}><input id={`${prefix}-colony`} maxLength={30} value={data.colony} onChange={e=>onChange("colony",e.target.value)} style={{ ...S.input, width:250 }}/></td>
             <Label required><label htmlFor={`${prefix}-district`}>District</label></Label>
             <td style={S.valTd}>
-              <select id={`${prefix}-district`} value={data.district} onChange={e=>onChange("district",e.target.value)} style={{ ...S.select, width:230 }}>
-                <option value="">Select</option>
-                {MH_DISTRICTS.map(d=><option key={d} value={d}>{d}</option>)}
-              </select>
+              <input id={`${prefix}-district`} type="text" value={data.district} onChange={e=>onChange("district",e.target.value)} style={{ ...S.input, width:230 }}/>
             </td>
           </tr>
           <tr>
